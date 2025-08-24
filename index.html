@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VioletTube</title>
+
+  <!-- Styles & icons -->
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header-left">
+      <button id="sidebarToggle" class="btn icon" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+
+      <a class="brand" href="#" aria-label="VioletTube home">
+        <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="logo">
+        <span class="brand-text">VioletTube</span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <form id="searchForm" class="search" role="search">
+        <input id="searchInput" type="search" placeholder="Search" aria-label="Search videos">
+        <button class="btn icon" type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <button class="btn icon mic" title="Voice search" aria-hidden="true"><i class="fa-solid fa-microphone"></i></button>
+    </div>
+
+    <div class="header-right">
+      <button id="themeToggle" class="btn icon" aria-label="Toggle theme"><i class="fa-regular fa-sun"></i></button>
+      <button id="watchLaterOpen" class="btn icon" aria-label="Open Watch later"><i class="fa-regular fa-clock"></i></button>
+      <button class="btn icon" aria-label="Upload"><i class="fa-solid fa-video"></i></button>
+      <button class="btn icon" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+      <img class="avatar" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User avatar">
+    </div>
+  </header>
+
+  <!-- Main app -->
+  <div class="app">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Primary">
+      <nav class="nav">
+        <a class="nav-item active" href="#"><i class="fa-solid fa-house"></i><span class="nav-label">Home</span></a>
+        <a class="nav-item" href="#"><i class="fa-regular fa-compass"></i><span class="nav-label">Explore</span></a>
+        <a class="nav-item" href="#"><i class="fa-regular fa-circle-play"></i><span class="nav-label">Shorts</span></a>
+        <a class="nav-item" href="#"><i class="fa-regular fa-square-plus"></i><span class="nav-label">Subscriptions</span></a>
+        <hr>
+        <a class="nav-item" href="#"><i class="fa-regular fa-clock"></i><span class="nav-label">Watch later</span></a>
+        <a class="nav-item" href="#"><i class="fa-regular fa-thumbs-up"></i><span class="nav-label">Liked videos</span></a>
+        <a class="nav-item" href="#"><i class="fa-regular fa-rectangle-list"></i><span class="nav-label">Library</span></a>
+        <hr>
+        <div class="sub-title">Subscriptions</div>
+        <a class="nav-item" href="#"><img class="chip-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><span class="nav-label">Web Dev</span></a>
+        <a class="nav-item" href="#"><img class="chip-avatar" src="https://randomuser.me/api/portraits/women/33.jpg" alt=""><span class="nav-label">Design Daily</span></a>
+        <a class="nav-item" href="#"><img class="chip-avatar" src="https://randomuser.me/api/portraits/men/34.jpg" alt=""><span class="nav-label">Gaming Hub</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main" id="main" role="main">
+      <!-- Chips / categories -->
+      <div id="chips" class="chips" role="toolbar" aria-label="Categories">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Shorts row -->
+      <section class="shorts" aria-label="Shorts">
+        <div class="shorts-head"><i class="fa-brands fa-youtube"></i><strong>Shorts</strong></div>
+        <div id="shortsRow" class="shorts-row" role="list"></div>
+      </section>
+
+      <!-- Videos grid -->
+      <section id="videos" class="videos" aria-live="polite" aria-label="Video results"></section>
+
+      <div class="load-more">
+        <button id="loadMore" class="btn load">Load more</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Watch Later Drawer -->
+  <aside id="watchLaterDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Watch later</h3>
+      <button id="watchLaterClose" class="btn icon" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="watchLaterList" class="drawer-body"></div>
+  </aside>
+  <div id="drawerBackdrop" class="backdrop" aria-hidden="true"></div>
+
+  <!-- Preview modal -->
+  <div id="previewModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Video preview">
+      <video id="previewVideo" controls muted playsinline></video>
+      <div class="modal-meta">
+        <img id="previewAvatar" class="avatar" alt="">
+        <div>
+          <h4 id="previewTitle"></h4>
+          <p id="previewChannel" class="byline"></p>
+        </div>
+      </div>
+      <button id="previewClose" class="btn icon modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+  <div id="modalBackdrop" class="backdrop" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
